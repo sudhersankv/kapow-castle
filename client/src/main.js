@@ -154,7 +154,7 @@ function renderPortraits() {
     copy.rotation.set(0, 0, 0);
     s.add(copy);
     const y = char.userData.headY;
-    cam.position.set(0.5, y + 0.1, 2.4);
+    cam.position.set(0.9, y + 0.15, 4.4);
     cam.lookAt(0, y, 0);
     r.render(s, cam);
     s.remove(copy);
