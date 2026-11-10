@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kapow Castle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:ital,wght@1,700;1,800;1,900&display=swap" />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+
+    <div id="hud" hidden>
+      <div class="plate left">
+        <div class="portrait"><img id="heroPortrait" alt="" /></div>
+        <div class="meter">
+          <div class="meterName">Brain power</div>
+          <div class="bar"><div id="chargeFill" class="fill charge"></div></div>
+          <div id="stars" class="stars">★ 0</div>
+        </div>
+      </div>
+      <div id="objective" class="objective"></div>
+      <div id="pips" class="pips"></div>
+      <div id="hintStrip" class="hintStrip" hidden>
+        <span>1. Walk up to someone</span>
+        <span>2. Talk out loud</span>
+        <span>3. Stuck? Press G for Exa</span>
+      </div>
+      <button id="switchSubject" class="switch" type="button">Change subject</button>
+      <div id="foePlate" class="plate right" hidden>
+        <div class="meter">
+          <div id="foeName" class="meterName"></div>
+          <div class="bar"><div id="shieldFill" class="fill shield"></div></div>
+          <div class="stars small">Puzzle shield</div>
+        </div>
+        <div class="portrait"><img id="foePortrait" alt="" /></div>
+      </div>
+    </div>
+
+    <div id="prompt" class="prompt" hidden></div>
+    <div id="goatBubble" class="goatBubble" hidden></div>
+    <button id="goatButton" class="goatButton" type="button" data-on="false" hidden>
+      <img id="goatIcon" alt="" />
+      <span><b>Ask Exa</b><small>Press G and ask out loud</small></span>
+    </button>
+    <div id="bursts"></div>
+    <div class="halftone" aria-hidden="true"></div>
+    <div id="toasts" role="status"></div>
+
+    <section id="duel" class="dialogue" hidden>
+      <span class="bracket tl"></span><span class="bracket tr"></span><span class="bracket bl"></span><span class="bracket br"></span>
+      <div class="turnChip" aria-hidden="true">Your turn!</div>
+      <div class="dlgPortrait"><img id="speakerPortrait" alt="" /></div>
+      <div class="dlgBody">
+        <div id="speakerName" class="nameplate"></div>
+        <p id="subtitle" class="line" aria-live="polite"></p>
+        <p id="youSaid" class="youSaid"></p>
+        <div class="dlgFoot">
+          <span id="mic" class="mic" data-state="connecting">Connecting</span>
+          <span id="voiceMeter" class="voiceMeter" aria-hidden="true"></span>
+          <span id="question" class="puzzleTag"></span>
+          <button type="button" id="leave" class="quiet">Walk away</button>
+        </div>
+        <div id="fallback" class="fallback" hidden>
+          <div id="choices" class="choices"></div>
+          <form id="typeForm" class="typeRow">
+            <label class="sr" for="typed">Your answer</label>
+            <input id="typed" autocomplete="off" placeholder="Type your answer" />
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="title" class="title">
+      <svg class="lineArt" viewBox="0 0 1000 800" preserveAspectRatio="none" aria-hidden="true">
+        <polyline points="640,0 760,210 690,330 880,560 820,800" stroke="#2ef2a3" />
+        <polyline points="1000,120 830,180 760,210 960,420 1000,400" stroke="#ff2e88" />
+        <polygon points="760,210 880,560 960,420" stroke="#ffc400" />
+        <polyline points="690,330 560,470 640,800" stroke="#12c7c7" />
+        <polygon points="560,470 690,330 700,520" stroke="#ff2e88" />
+      </svg>
+      <h1 aria-label="Kapow Castle">
+        <svg class="logo" viewBox="0 0 640 330" aria-hidden="true">
+          <polygon id="logoBurst" fill="#ff2e88" stroke="#120a24" stroke-width="7" stroke-linejoin="round" />
+          <g transform="translate(40 0) skewX(-8)">
+            <text x="20" y="196" textLength="550" lengthAdjust="spacingAndGlyphs" class="logoKapow">KAPOW</text>
+            <path d="M34 214 h48 v-14 h40 v14 h48 v-14 h40 v14 h48 v-14 h40 v14 h48 v-14 h40 v14 h48 v-14 h40 v14 h40 v86 h-480 z" fill="#2a1fa8" stroke="#120a24" stroke-width="7" stroke-linejoin="round" />
+            <text x="66" y="290" textLength="470" lengthAdjust="spacing" class="logoCastle">CASTLE</text>
+          </g>
+        </svg>
+      </h1>
+      <p class="pitch">Choose what to learn. Walk up to a character and start talking.</p>
+      <div class="subjects">
+        <button id="start" class="subject" data-subject="math" type="button">
+          <img id="mathPortrait" alt="" />
+          <span><b>Math Hall</b><small>Times tables and sharing with Sumi the Abacus Knight</small></span>
+        </button>
+        <button class="subject" data-subject="history" type="button">
+          <img id="historyPortrait" alt="" />
+          <span><b>The Genghis Khan Tour</b><small>Three stages across the steppe, guided by Old Quill</small></span>
+        </button>
+      </div>
+      <p class="keys">Move with W A S D or the arrow keys. Hold Shift to sprint. Allow your microphone when asked.</p>
+    </section>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+.makeIcon { flex: none; display: flex; align-items: center; justify-content: center; gap: 4px; width: 72px; height: 60px; background: linear-gradient(160deg, var(--orange), var(--magenta)); }
+.makeIcon i { display: block; width: 6px; background: var(--ink); transform: skewX(-12deg); }
+.makeIcon i:nth-child(1), .makeIcon i:nth-child(5) { height: 14px; }
+.makeIcon i:nth-child(2), .makeIcon i:nth-child(4) { height: 28px; }
+.makeIcon i:nth-child(3) { height: 42px; }
+
+.makeDialog { width: min(620px, calc(100vw - 32px)); max-height: calc(100vh - 32px); padding: 0; color: var(--cream); background: var(--ink); border: 0; border-top: 4px solid var(--magenta); border-bottom: 4px solid var(--marigold); clip-path: polygon(22px 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%, 0 22px); }
+.makeDialog::backdrop { background: rgb(18 10 36 / .72); }
+.makeForm { display: grid; gap: 14px; padding: 24px 28px; }
+.makeForm h2 { margin: 0; font: italic 900 42px/1 var(--display); color: var(--marigold); }
+.makeIntro { margin: 0; }
+.makeKinds { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; border: 0; }
+.makeKinds legend { padding: 0; margin-bottom: 6px; font-weight: 700; }
+.makeKinds input { position: absolute; opacity: 0; }
+.makeKinds span { display: block; padding: 5px 16px; font: italic 800 20px var(--display); background: rgb(255 246 214 / .12); cursor: pointer; transform: skewX(-10deg); }
+.makeKinds input:checked + span { color: var(--ink); background: var(--mint); }
+.makeKinds input:focus-visible + span { outline: 3px solid var(--mint); outline-offset: 2px; }
+.makeField { display: grid; gap: 6px; font-weight: 700; }
+.makeField input { padding: 10px 12px; color: var(--ink); background: var(--cream); border: 0; }
+.makeDrop { position: relative; display: grid; justify-items: center; gap: 2px; padding: 20px; text-align: center; border: 2px dashed rgb(255 246 214 / .5); cursor: pointer; }
+.makeDrop[data-over='true'] { background: rgb(46 242 163 / .16); border-color: var(--mint); }
+.makeDrop:focus-within { border-color: var(--mint); }
+.makeDrop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.makeDrop b { font: italic 800 26px/1.1 var(--display); overflow-wrap: anywhere; }
+.makeSteps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0; padding: 0 0 0 20px; font-size: 15px; line-height: 1.25; }
+.makeSteps b { display: block; font: italic 900 24px/1 var(--display); color: var(--marigold); }
+.makeStatus { min-height: 1.4em; margin: 0; font-weight: 700; color: var(--mint); }
+.makeStatus[data-tone='error'] { color: #ff9ac6; }
+.makeActions { display: flex; gap: 10px; }
+
+@media (max-width: 560px) {
+  .makeSteps { grid-template-columns: 1fr; }
+}
